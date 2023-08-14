@@ -1,0 +1,55 @@
+#fullscreen {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+#fullscreen:hover {
+  background-color: #fff;
+  position: relative; /* Create a stacking context */
+}
+
+#fullscreen::after {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  z-index: -1;
+}
+
+#fullscreen:active::after {
+  display: block;
+  animation: star-ray 0.8s linear;
+}
+
+@keyframes star-ray {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  50% {
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+  }
+  100% {
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+  }
+}
